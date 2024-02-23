@@ -1,4 +1,4 @@
-export const responseHandler = (responseData, request, response, next) => {
+const responseHandler = (responseData, request, response, next) => {
     // console.log(responseData, request, response)
     if(request.body.newAccessToken)responseData.data = {...responseData.data,newAccessToken:request.body.newAccessToken};
     if (responseData.code >=400 ) {
@@ -9,6 +9,7 @@ export const responseHandler = (responseData, request, response, next) => {
         }
         // console.log(responseJSON.toString());
         response.status(responseData.code).json(responseJSON)
+        next()
     } else {
         const responseJSON = {
             status: 1,
@@ -19,3 +20,4 @@ export const responseHandler = (responseData, request, response, next) => {
         response.status(responseData.code).json(responseJSON)
     }
 }
+module.exports=responseHandler

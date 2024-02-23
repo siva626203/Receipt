@@ -6,7 +6,7 @@ const contract = require("@truffle/contract");
 
 const productRouter = require("./routes/products");
 const storeRouter = require("./routes/store");
-const { responseHandler } = require("./middleware/responseHandler");
+const responseHandler = require("./middleware/responseHandler");
 
 const mintNFT = require("./mint");
 app.use(cors());
